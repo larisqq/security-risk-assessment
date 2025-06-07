@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Întrebări Frecvente - Evaluator Risc</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <style>
+    :root {
+      --primary: #002855;
+      --secondary: #FFD700;
+      --accent: #004080;
+      --light: #f8f9fa;
+      --dark: #333;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .header-wave {
+      height: 50px;
+      width: 100%;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23002855" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23002855" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23002855"/></svg>');
+      background-size: cover;
+      margin-bottom: 40px;
+    }
+.faq-container {
+  max-width: 1100px; /* mai mare */
+  margin: 0 auto 80px;
+  padding: 0 30px;
+  font-size: 1.2rem;
+}
+
+h2.section-title {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 50px;
+  font-size: 2.5rem; /* Mărit */
+  position: relative;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px; /* spațiere mai mare */
+}
+
+.faq-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 40, 85, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--secondary);
+}
+
+.faq-question {
+  padding: 25px 30px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.faq-question i {
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+  color: var(--secondary);
+}
+
+.faq-answer {
+  padding: 0 30px;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  padding: 0 30px 25px;
+  max-height: 1000px;
+}
+
+.faq-answer ul {
+  padding-left: 25px;
+}
+
+.faq-answer li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.contact-cta {
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.3rem;
+}
+
+.contact-cta h3 {
+  margin-top: 0;
+  font-size: 1.7rem;
+}
+
+.cta-button {
+  padding: 14px 36px;
+  font-size: 1.2rem;
+  border-radius: 40px;
+}
+
+    
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Întrebări Frecvente despre Analiza de Risc</h1>
+    <p>Soluții complete pentru securitatea afacerii tale</p>
+    <div class="header-wrapper">
+        <header>
+            <nav>
+                <a href="index.html">Acasă</a>
+                <a href="contact.html">Contact</a>
+                <a href="harta.html">Coeficienți de criminalitate</a>
+                <a href="intrebari.html">Întrebări frecvente</a>
+            </nav>
+        </header>
+  </header>
+
+  <div class="header-wave"></div>
+
+  <main class="faq-container">
+    <h2 class="section-title">Tot ce trebuie să știi</h2>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Ce este Analiza la risc la securitatea fizică?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Analiza de risc reprezintă procesul prin care se identifică elementele ce pot genera incidente de securitate. Se evaluează probabilitatea și consecințele acestora, iar în baza lor se stabilesc măsuri de prevenire și protecție adaptate nevoilor dumneavoastră.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Ce firme au obligația de a deține această analiză?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Conform legislației în vigoare, toate societățile comerciale care dețin bunuri sau valori și sunt obligate să asigure protecția acestora, conform Legii 333/2003 și HG 301/2012, trebuie să dispună de o analiză de risc actualizată.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>La ce mă ajută această analiză?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <ul>
+            <li>Protecția optimă a persoanelor și bunurilor din incintă</li>
+            <li>Avizarea și optimizarea planului de pază</li>
+            <li>Identificarea tuturor riscurilor și recomandarea măsurilor adecvate</li>
+            <li>Avizarea și îmbunătățirea sistemului tehnic de securitate</li>
+            <li>Reducerea primelor de asigurare</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Ce documente sunt necesare pentru analiză?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <ul>
+            <li>Certificatul de înregistrare ONRC</li>
+            <li>Act de proprietate sau contract de închiriere</li>
+            <li>Planul de pază existent (dacă este cazul)</li>
+            <li>Proiectul sistemului tehnic de securitate</li>
+            <li>Organigramă și planuri ale spațiilor</li>
+            <li>Documente privind asigurările</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Care este amenda dacă nu efectuez analiza?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Conform legislației, sancțiunile pentru neîndeplinirea acestei obligații pot varia între 5.000 și 10.000 lei. Amenda poate fi aplicată repetitiv până la remedierea situației. Verificările se efectuează periodic de către organele competente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Care este tariful pentru analiză?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Costul analizei de risc este stabilit în funcție de mai mulți factori: complexitatea obiectivului, suprafața, locația, numărul de angajați, tipul de activitate și măsurile de securitate existente. Vă oferim o estimare gratuită după o evaluare preliminară.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Cât durează realizarea documentației?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Durata de realizare variază între 3 și 20 de zile lucrătoare, în funcție de complexitatea obiectivului și de promptitudinea cu care ne sunt furnizate documentele necesare. Pentru situații urgente, oferim soluții accelerate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Cine poate realiza analiza?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Conform legii, analiza de risc la securitatea fizică poate fi realizată exclusiv de evaluatori acreditați, înscriși în Registrul Național al Evaluatorilor de Risc la Securitate Fizică (RNERSF). Echipa noastră este autorizată și cu experiență vastă în domeniu.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Care este valabilitatea Analizei de Risc?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Documentul are o valabilitate standard de 3 ani. Totuși, este necesară actualizarea imediată (în maxim 30 de zile) în urma unui incident de securitate sau a unor modificări semnificative (schimbarea activității, modificări structurale, extinderi etc.).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-cta">
+      <h3>Mai ai întrebări?</h3>
+      <p>Echipa noastră de specialiști este gata să răspundă la orice nelămurire și să vă ofere soluții personalizate.</p>
+      <a href="contact.html" class="cta-button">Contactează-ne acum</a>
+    </div>
+  </main>
+   <button id="scrollToTopBtn" class="teardrop-btn" aria-label="Mergeți la începutul paginii">
+        <svg class="arrow-icon" viewBox="0 0 24 24">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+        </svg>
+    </button>
+
+  <footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Târgu Neamț, România</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+40 744 134 885</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>amievalsec.srl@gmail.com</span>
+                </div>
+            </div>
+            
+            <nav class="footer-nav">
+                <a href="index.html">Acasă</a>
+                <a href="contact.html">Contact</a>
+                <a href="reviews.html">Recenzii</a>
+                <a href="harta.html">Harta</a>
+            </nav>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Evaluator Risc Securitate Fizică. Toate drepturile rezervate.</p>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".faq-question").forEach((q) => {
+      q.addEventListener("click", () => {
+        const item = q.parentElement;
+        const isActive = item.classList.contains("active");
+        
+        // Închide toate celelalte întrebări
+        document.querySelectorAll(".faq-item").forEach(i => {
+          if (i !== item) i.classList.remove("active");
+        });
+        
+        // Deschide/închide întrebarea curentă
+        item.classList.toggle("active", !isActive);
+      });
+    });
+    
+  </script>
+  <script>
+        // Butonul de scroll-to-top
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

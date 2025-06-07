@@ -1,0 +1,738 @@
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  max-height: 800px;
+  overflow: hidden;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 40, 85, 0.7) 0%, rgba(0, 40, 85, 0.3) 100%);
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px);
+  transform: scale(1.02);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 2;
+  width: 80%;
+}
+
+/* Word Stack */
+.word-stack {
+  font-family: 'Arial', sans-serif;
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  cursor: default;
+  margin-bottom: 1.5rem;
+}
+
+.word-line {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.word-line:nth-child(2) {
+  padding-left: 1.2em;
+}
+
+.word-line:nth-child(3) {
+  padding-left: 2.4em;
+}
+
+.ami-letter {
+  position: relative;
+  display: inline-block;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.word-stack:hover .ami-letter {
+  color: #FFD700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  transform: scale(1.3);
+}
+
+/* CTA Button */
+.tagline {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: rgba(255, 215, 0, 0.2);
+  color: white;
+  border: 2px solid #FFD700;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: rgba(255, 215, 0, 0.4);
+  transform: translateY(-3px);
+}
+
+
+
+/*  Button  de scroll */
+.teardrop-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px; /* Păstrăm aceeași înălțime și lățime pentru cerc perfect */
+  border: none;
+  border-radius: 50%; /* Formă circulară */
+  background: #FFD700; /* Galbenul din paleta ta */
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9); /* Mică reducere inițială */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teardrop-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.teardrop-btn:hover {
+  background: transparent; /* Fond transparent la hover */
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.arrow-icon {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  transform: rotate(45deg) translateX(-1px);
+  transition: transform 0.3s ease;
+}
+
+.teardrop-btn:hover .arrow-icon {
+  fill: #FFD700; /* Săgeata devine galbenă la hover */
+  transform: scale(1.3); /* Săgeata se mărește */
+}
+
+/* Adaptare pentru ecrane mici */
+@media (max-width: 768px) {
+  .teardrop-btn {
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    bottom: 20px;
+  }
+  
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+} 
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 50vh;
+  }
+
+  .word-stack {
+    font-size: 2rem;
+  }
+
+  .word-line:nth-child(2) {
+    padding-left: 0.8em;
+  }
+
+  .word-line:nth-child(3) {
+    padding-left: 1.6em;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+}
+
+/* Stiluri pentru navbar */
+nav a {
+  display: inline-block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  position: relative;
+  z-index: 1;
+}
+
+nav a:hover {
+  transform: scale(1.1);
+  color: #FFD700;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #FFD700;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 70%;
+}
+
+/* Stiluri pentru hero banner */
+.header-wrapper {
+  position: relative;
+}
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  max-height: 800px;
+  overflow: hidden;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 40, 85, 0.7) 0%, rgba(0, 40, 85, 0.3) 100%);
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px);
+  transform: scale(1.02);
+}
+
+/* Stiluri pentru textul suprapus */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 2;
+  width: 80%;
+}
+
+.word-stack {
+  font-family: 'Arial', sans-serif;
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  cursor: default;
+  margin-bottom: 1.5rem;
+}
+
+.word-line {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.word-line:nth-child(2) {
+  padding-left: 1.2em;
+}
+
+.word-line:nth-child(3) {
+  padding-left: 2.4em;
+}
+
+.ami-letter {
+  position: relative;
+  display: inline-block;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.word-stack:hover .ami-letter {
+  color: #FFD700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  transform: scale(1.3);
+}
+
+/* Restul stilurilor */
+.tagline {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: rgba(255, 215, 0, 0.2);
+  color: white;
+  border: 2px solid #FFD700;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: rgba(255, 215, 0, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 50vh;
+  }
+
+  .word-stack {
+    font-size: 2rem;
+  }
+
+  .word-line:nth-child(2) {
+    padding-left: 0.8em;
+  }
+
+  .word-line:nth-child(3) {
+    padding-left: 1.6em;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+}
+
+/* Banda galbenă */
+.yellow-band {
+    background-color: #FFD700;
+    
+    padding: 20px 0;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.yellow-band-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+}
+
+.company-name {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #002855; /* Albastru închis */
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.contact-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #002855; /* Albastru închis */
+}
+
+.whatsapp-container {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.whatsapp-btn {
+    background-color: #002855; /* Albastru ca navbarul */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-emphasis-color: #FFD700; /* Galben */
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 30px;
+    border: 2px solid #002855; /* Bordură albastră */
+}
+
+.whatsapp-btn:hover {
+    background-color: #004080; /* Albastru mai deschis la hover */
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-color: #004080;
+}
+
+.email-info {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #002855; /* Text albastru */
+}
+
+.gmail-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .yellow-band-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .company-name {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .whatsapp-btn {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+
+/* SECTIUNDE DESPRE ANALIZA ------------------------------------------------------------------ */
+/* Risk Analysis Section */
+
+/* SECTIUNDE DESPRE ANALIZA ------------------------------------------------------------------ */
+/* Risk Analysis Section */
+
+.risk-section-dynamic {
+  padding: 100px 40px;
+  background: #f9fafb;
+  border-top: 2px solid #eee;
+}
+
+.risk-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.risk-title {
+  font-size: 3.2rem;
+  color: #002855;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.animated-highlight p {
+  font-size: 1.6rem;
+  color: #222;
+  line-height: 1.9;
+  background: white;
+  padding: 30px;
+  border-left: 6px solid #FFD700;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-bottom: 60px;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.highlight-gold {
+  color: #c29200;
+  font-weight: 700;
+  background: linear-gradient(transparent 60%, #ffef9c 60%);
+}
+
+.highlight-blue {
+  color: #002855;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.risk-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.risk-block {
+  background: white;
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.risk-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.risk-block h3 {
+  color: #002855;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.risk-block i {
+  color: #FFD700;
+  margin-right: 10px;
+  font-size: 1.4rem;
+}
+
+.risk-block p {
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.cta-area {
+  margin-top: 50px;
+}
+
+.cta-dynamic {
+  display: inline-block;
+  padding: 18px 40px;
+  background: #FFD700;
+  color: #002855;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 1.2rem;
+}
+
+.cta-dynamic:hover {
+  background: transparent;
+  border-color: #FFD700;
+  color: #FFD700;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive ajustat */
+@media (max-width: 768px) {
+  .risk-title {
+    font-size: 2.2rem;
+  }
+  .animated-highlight p {
+    font-size: 1.3rem;
+    padding: 20px;
+  }
+  .risk-block h3 {
+    font-size: 1.3rem;
+  }
+  .risk-block p {
+    font-size: 1.05rem;
+  }
+  .cta-dynamic {
+    padding: 14px 25px;
+    font-size: 1.1rem;
+  }
+}
+
+
+
+/* SECTIUNE RAPORT DE EVALUARE --------------------------------------------------------------------------------------*/
+
+.evaluation-tabs-section {
+  background: #f9fafb;
+  padding: 100px 40px;
+  border-top: 1px solid #eaeaea;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem; /* Mărit */
+  color: #002855;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 100px;
+  height: 4px;
+  background: #FFD700;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: white;
+  border: 3px solid #FFD700;
+  color: #002855;
+  font-weight: 700;
+  padding: 20px 40px;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  background: #FFD700;
+  color: #002855;
+  transform: scale(1.05);
+}
+
+.tab-content {
+  display: none;
+  max-width: 1100px; /* Mărit */
+  margin: 0 auto;
+  font-size: 1.2rem; /* Mărit */
+  line-height: 1.8;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.report-content,
+.process-steps,
+.document-list {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.document-list li,
+.content-item,
+.step {
+  margin-bottom: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 1.1rem;
+}
+
+.step-icon {
+  color: #FFD700;
+  font-size: 1.6rem;
+}
+
+.item-number {
+  font-weight: bold;
+  color: #002855;
+}
+
+.cta-button {
+  background: #002855;
+  color: white;
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.cta-button:hover {
+  background: transparent;
+  color: #002855;
+  border: 2px solid #002855;
+}
+
+/* Responsive - păstrăm lizibilitatea și spațierea bună */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .tab-btn {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+  }
+
+  .report-content,
+  .process-steps,
+  .document-list {
+    padding: 25px;
+  }
+
+  .tab-content {
+    font-size: 1.1rem;
+  }
+}

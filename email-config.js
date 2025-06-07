@@ -1,0 +1,1 @@
+﻿const EMAILJS_PUBLIC_KEY = "bvr9xpXSDM_Ha4m2Y";

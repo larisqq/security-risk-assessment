@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Evaluare Risc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
+
+
+    <style>
+        :root {
+            --primary: #002855;
+            --secondary: #FFD700;
+            --accent: #004080;
+            --light: #f8f9fa;
+            --dark: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 20px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        #contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 40, 85, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        #contact-form:hover {
+            box-shadow: 0 15px 40px rgba(0, 40, 85, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-group:nth-child(1) {
+            animation-delay: 0.1s;
+            transform: translateX(-20px);
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+            transform: translateX(-20px);
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.3s;
+            transform: translateX(-20px);
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.4s;
+            transform: translateX(-20px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        label i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e3e7;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+            background-color: white;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 40, 85, 0.3);
+        }
+
+        button[type="submit"] i {
+            transition: transform 0.3s ease;
+        }
+
+        button[type="submit"]:hover i {
+            transform: translateX(5px);
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .floating-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            #contact-form {
+                padding: 1.5rem;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                right: 20px;
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Evaluator de Risc la Securitate Fizică</h1>
+
+            <nav>
+                <a href="index.html">Acasă</a>
+                <a href="contact.html">Contact</a>
+                <a href="harta.html">Coeficienți de criminalitate</a>
+                <a href="intrebari.html">Întrebări frecvente</a>
+            </nav>
+    </header>
+    </div>
+    </header>
+
+    <main>
+        <h2>Contactează-ne pentru o analiză de risc</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">
+                    <i class="fas fa-user"></i> NUMELE TĂU
+                </label>
+                <input type="text" id="name" name="from_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <i class="fas fa-envelope"></i> Adresa de email
+                </label>
+                <input type="email" id="email" name="from_email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">
+                    <i class="fas fa-phone"></i> Telefon
+                </label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">
+                    <i class="fas fa-comment"></i> Mesajul tău
+                </label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i> Trimite mesaj
+            </button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Târgu Neamț, România</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>0744 430 784 </span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>amievalsec.srl@gmail.com</span>
+                    </div>
+                </div>
+
+                <nav class="footer-nav">
+                    <a href="index.html">Acasă</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="harta.html">Harta</a>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Evaluator Risc Securitate Fizică. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="floating-btn" id="scrollToTopBtn" aria-label="Mergeți la începutul paginii">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <script src="email-config.js"></script>
+
+    <script>
+        // Initialize EmailJS
+        (function () {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        })();
+
+        // Form submission
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Se trimite...';
+            submitBtn.disabled = true;
+
+            emailjs.sendForm('service_tjafcrj', 'template_lfgapjk', this)
+                .then(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Trimis cu succes!';
+                    form.reset();
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }, (error) => {
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Eroare';
+                    alert('A apărut o eroare: ' + JSON.stringify(error));
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                });
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
